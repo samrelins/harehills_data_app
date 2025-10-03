@@ -132,7 +132,7 @@ def plot_msoa_sns_rates(dfs, ethnicity, rate_col):
     rate_name = "Census" if "census" in rate_col else "Workday"
     ax.set_xlabel('')
     ax.set_ylabel('S&S Incidents per 1,000 People')
-    ax.grid(True, which='major', axis='x', linestyle='--', linewidth=0.7)
+    ax.grid(True, which='major', axis='y', linestyle='--', linewidth=0.7)
     ax.spines[['top', 'right', 'bottom', 'left']].set_visible(False)
     ax.tick_params(axis='both', which='both', labelsize=14, length=0)
     plt.xticks(rotation=45, ha='right')
