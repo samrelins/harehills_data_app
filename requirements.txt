@@ -1,0 +1,7 @@
+streamlit
+pandas
+geopandas
+matplotlib
+seaborn
+contextily
+pyarrow==15.0.0
