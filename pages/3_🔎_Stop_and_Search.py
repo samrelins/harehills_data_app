@@ -36,6 +36,23 @@ st.markdown("""
 This final section analyses police stop and search (S&S) data, comparing Harehills to the rest of Leeds. The rates are calculated per 1,000 people, using either census (residential) or workday population figures.
 """)
 
+with st.expander("**Note on Population Data**"):
+    st.info("""
+    Crime rates are calculated per 1,000 people. This analysis uses two different population bases, and the choice of base affects the interpretation of the resulting rate.
+
+    #### Census (Residential) Population
+    This is the official number of people who live in an area, based on census data.
+
+    * **Interpretation:** This rate measures crime risk relative to the **resident community**.
+    * **Considerations:** In areas with a small residential population but high daytime or evening footfall (e.g., city centres, retail parks), this denominator can produce an **artificially inflated crime rate**. It does not account for the large transient population of commuters, shoppers, and visitors who are also exposed to the risk of crime.
+
+    #### Workday Population
+    This is an estimate of the number of people present in an area during a typical workday, including residents and commuters.
+
+    * **Interpretation:** This rate measures crime risk relative to the **total ambient population** during daytime hours. It is a proxy for an area's footfall.
+    * **Considerations:** This measure provides a more representative rate of risk in busy commercial areas by using a larger, more appropriate denominator. However, it may be less relevant for crimes that disproportionately affect residents in their homes or outside of standard work hours, such as residential burglary.
+    """)
+
 # --- Section 1: S&S Rate Distributions (Box Plot) ---
 st.header("How do Harehills' S&S Rates Compare?")
 st.markdown("""

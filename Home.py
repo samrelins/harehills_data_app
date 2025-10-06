@@ -12,7 +12,7 @@ st.set_page_config(
 st.title("Harehills: Interactive Data Analysis")
 
 st.markdown("""
-Welcome to an interactive exploration of the Harehills area in Leeds. This project uses publicly available data to examine three key themes: deprivation, crime, and police stop & search operations. The aim is to offer a data-driven examination of the neighbourhood by situating local statistics within the broader context of city-wide trends, providing a clear view of how the area is reflected in administrative data.
+Welcome to an interactive exploration of the Harehills area in Leeds. This project uses publicly available data to examine three key themes: **deprivation**, **crime**, and **police stop & search** incidents. The aim is to offer a data-driven examination of the neighbourhood by situating local statistics within the broader context of city-wide trends, providing a clear view of how the area is reflected in administrative data.
 
 **How to Use This App**
 

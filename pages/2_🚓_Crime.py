@@ -23,11 +23,24 @@ if percentiles_df is not None:
 st.title("Crime Analysis")
 st.markdown("""
 This section explores reported crime rates in Harehills compared to the rest of Leeds. 
-
-**Note on Population:** Crime rates are calculated per 1,000 people. You can switch between two population bases:
-- **Census Population:** The residential population.
-- **Workday Population:** An estimate of the people present during a typical workday. This can significantly alter rates for areas with high footfall but low residential populations (e.g., city centres).
 """)
+
+with st.expander("**Note on Population Data***"):
+    st.info("""
+    Crime rates are calculated per 1,000 people. This analysis uses two different population bases, and the choice of base affects the interpretation of the resulting rate.
+
+    #### Census (Residential) Population
+    This is the official number of people who live in an area, based on census data.
+
+    * **Interpretation:** This rate measures crime risk relative to the **resident community**.
+    * **Considerations:** In areas with a small residential population but high daytime or evening footfall (e.g., city centres, retail parks), this denominator can produce an **artificially inflated crime rate**. It does not account for the large transient population of commuters, shoppers, and visitors who are also exposed to the risk of crime.
+
+    #### Workday Population
+    This is an estimate of the number of people present in an area during a typical workday, including residents and commuters.
+
+    * **Interpretation:** This rate measures crime risk relative to the **total ambient population** during daytime hours. It is a proxy for an area's footfall.
+    * **Considerations:** This measure provides a more representative rate of risk in busy commercial areas by using a larger, more appropriate denominator. However, it may be less relevant for crimes that disproportionately affect residents in their homes or outside of standard work hours, such as residential burglary.
+    """)
 
 # --- Section 1: Crime Rate Distributions (Box Plot) ---
 st.header("How Do Harehills' Crime Rates Compare?")
