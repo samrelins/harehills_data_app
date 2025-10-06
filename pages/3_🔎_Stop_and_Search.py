@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import ScalarFormatter
 import pandas as pd
+import numpy as np
 from app_utils import page_config, load_data
 
 # --- Page Configuration and Data Loading ---
@@ -58,13 +59,17 @@ with col2:
     )
 
 def plot_sns_rate_distributions(dfs, category_info, rate_col):
+    """
+    Plots boxplots, adding a conditional grid line for the max value
+    to avoid overlaps and using standard number formatting.
+    """
     category_name, category_col = category_info
     
-    # Select correct dataframe
+    # --- (Data selection logic remains the same) ---
     if category_col == 'ethnicity_simple': base_df = dfs['eth_df']
     elif category_col == 'age_group': base_df = dfs['age_eth_df']
     elif category_col == 'object_of_search': base_df = dfs['object_df']
-    else: base_df = dfs['outcome_df'] # Outcome
+    else: base_df = dfs['outcome_df']
         
     if 'workday' in rate_col and category_col == 'age_group':
         st.warning("Workday population data is not available with an age breakdown. Please select Census Population.")
@@ -81,7 +86,7 @@ def plot_sns_rate_distributions(dfs, category_info, rate_col):
     sns.stripplot(data=harehills, x=category_col, y=rate_col, hue='msoa_hocl_name', ax=ax, order=order,
                   size=12, linewidth=1.5, edgecolor='black', jitter=False, palette={'Harehills North': '#d9534f', 'Harehills South': '#f0ad4e'})
 
-    rate_name = "Census" if "census" in rate_col else "Workday"
+    # --- Styling and Labels ---
     ax.set_ylabel('S&S Incidents per 1,000 People (Log Scale)', fontsize=14)
     ax.set_xlabel('')
     ax.grid(True, which='major', axis='y', linestyle='--', linewidth=0.7)
@@ -89,8 +94,29 @@ def plot_sns_rate_distributions(dfs, category_info, rate_col):
     ax.tick_params(axis='both', which='both', labelsize=14, length=0)
     plt.xticks(rotation=45, ha='right', fontsize=12)
     ax.set_yscale('log')
+    
+    # --- FIX 1: Force standard number formatting on the y-axis ---
     ax.yaxis.set_major_formatter(ScalarFormatter())
-    ax.legend(title='Harehills MSOAs')
+
+    # --- FIX 2: Conditionally add the max value line to prevent overlap ---
+    if not harehills.empty:
+        max_val = harehills[rate_col].max()
+        current_ticks = ax.get_yticks()
+        
+        # Check if the max value is too close (e.g., within 8%) to any existing tick
+        is_too_close = any(abs(max_val - tick) / tick < 0.08 for tick in current_ticks if tick > 0)
+        
+        # Only add the line and label if it's not too close to another line
+        if not is_too_close:
+            ax.axhline(y=max_val, color='dimgray', linestyle='--', linewidth=0.9, zorder=0)
+            ax.text(0, max_val, f'{max_val:.0f} ', 
+                    transform=ax.get_yaxis_transform(),
+                    ha='right', va='center', color='black', fontsize=12)
+
+    handles, labels = ax.get_legend_handles_labels()
+    unique_handles_labels = dict(zip(labels, handles))
+    ax.legend(unique_handles_labels.values(), unique_handles_labels.keys(), title='Harehills MSOAs')
+    
     plt.tight_layout()
     return fig
 

@@ -47,6 +47,10 @@ pop_rate_col_box = st.radio(
 )
 
 def plot_rate_distributions(df, rate_col):
+    """
+    Plots crime rate distributions, adding a conditional grid line for the max value
+    to avoid overlaps and using standard number formatting.
+    """
     rest_of_leeds = df[df['area'] == 'Rest of Leeds']
     harehills = df[df['area'] == 'Harehills']
     
@@ -65,10 +69,29 @@ def plot_rate_distributions(df, rate_col):
     ax.set_xlabel('')
     plt.xticks(rotation=45, ha='right', fontsize=12)
     ax.set_yscale('log')
+    
+    # Ensure standard number formatting on the y-axis
     ax.yaxis.set_major_formatter(ScalarFormatter())
+    
     ax.grid(True, which='major', axis='y', linestyle='--', linewidth=0.7)
     ax.spines[['top', 'right', 'bottom', 'left']].set_visible(False)
     ax.tick_params(axis='both', which='both', labelsize=14, length=0)
+
+    # --- ADDED: Conditionally add the max value line to prevent overlap ---
+    if not harehills.empty:
+        max_val = harehills[rate_col].max()
+        current_ticks = ax.get_yticks()
+        
+        # Check if the max value is too close (e.g., within 8%) to any existing tick
+        is_too_close = any(abs(max_val - tick) / tick < 0.08 for tick in current_ticks if tick > 0)
+        
+        # Only add the line and label if it's not too close to another line
+        if not is_too_close:
+            ax.axhline(y=max_val, color='dimgray', linestyle='--', linewidth=0.9, zorder=0)
+            ax.text(0, max_val, f'{max_val:.0f} ', 
+                    transform=ax.get_yaxis_transform(),
+                    ha='right', va='center', color='black', fontsize=12)
+
     ax.legend(title='Harehills MSOAs')
     plt.tight_layout()
 
