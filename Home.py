@@ -1,29 +1,35 @@
-# Home.py
-
 import streamlit as st
-from app_utils import page_config
 
 # Set the page configuration
-page_config("Harehills Interactive Analysis")
+# This replaces the call to your custom page_config function
+st.set_page_config(
+    page_title="Harehills Interactive Analysis",
+    layout="wide"
+)
 
 # --- Page Content ---
 
-st.title("An Interactive Analysis of Harehills, Leeds")
+st.title("Harehills: The Data Behind the Narrative")
 
 st.markdown("""
-Welcome to an interactive exploration of the Harehills area in Leeds. 
-This project uses publicly available data to delve into three key areas: **deprivation**, **crime**, and **police stop & search operations**.
+Welcome to an interactive exploration of the Harehills area in Leeds. This project uses publicly available data to examine three key themes: deprivation, crime, and police stop & search operations. The aim of this analysis is to offer a data-driven examination of a neighbourhood often defined by headlines and reputation.[1, 2] By situating local statistics within the broader context of city-wide trends, we can build a more nuanced understanding of how the area is reflected in administrative data.
 
-### The Motivation
-The goal of this analysis is to provide a data-driven perspective on a specific neighbourhood. By comparing local statistics to city-wide trends, we can better understand the unique challenges and characteristics of the area.
+This external view, shaped by recurring crises and amplified by media, often paints a one-dimensional picture of a "problem" area.[1, 3] It's a narrative rooted in the tangible challenges of high crime rates and deep socio-economic deprivation, with the Gipton & Harehills ward ranking among the most deprived nationally.[4, 5]
 
-### How to Use This App
-Use the sidebar on the left to navigate between the different analytical sections:
-- **Deprivation (IMD):** Explore how Harehills ranks in the Index of Multiple Deprivation (IMD), both nationally and within Leeds.
-- **Crime:** Investigate reported crime rates, comparing Harehills to other Leeds neighbourhoods across various crime types.
-- **Stop and Search:** Analyse data on police stop and search incidents, with breakdowns by ethnicity, age, and outcome.
-
-All visualisations are interactive. Use the buttons and dropdown menus to filter the data and tailor the analysis to your interests.
+However, this picture is profoundly incomplete. To its residents, Harehills is a "superdiverse" [6] and resilient community, a place celebrated for its vibrant cultural mix and a powerful "grassroots spirit that has been lost in other more invested in parts of the city".[1] This app provides the raw data to explore the space between these two competing narratives.
 """)
 
+# Data source information
 st.info("All data is sourced from Police Data UK, the Office for National Statistics (Census 2021), and the Ministry of Housing, Communities & Local Government (IMD 2019).")
+
+# Citations for the introductory text
+st.markdown("""
+---
+### Citations
+1.  Welcome to Leeds,(https://welcometoleeds.co.uk/suburb-guide/harehills/).
+2.  Yorkshire Post,(https://www.yorkshirepost.co.uk/news/people/harehills-leeds-the-secret-oasis-nestled-inside-one-of-yorkshires-most-deprived-neighbourhoods-which-attracts-love-island-stars-4985641), 2025.
+3.  Wikipedia, [*Harehills*](https://en.wikipedia.org/wiki/Harehills).
+4.  The Guardian, [*How unrest in Leeds escalated – and was defused*](https://www.theguardian.com/uk-news/article/2024/jul/19/how-unrest-in-leeds-escalated-and-was-defused-harehills), 2024.
+5.  Yorkshire Voice, [*Living in Poverty and deprived areas are seriously bad for your health*](https://yorkshirevoice.com/living-in-poverty-and-deprived-areas-are-seriously-bad-for-your-health), 2024.
+6.  TLANG Blog,(https://tlangblog.wordpress.com/2015/10/30/superdiverse-inner-city-leeds/), 2015.
+""")
