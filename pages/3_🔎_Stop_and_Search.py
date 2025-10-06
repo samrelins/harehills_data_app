@@ -38,7 +38,7 @@ This final section analyses police stop and search (S&S) data, comparing Harehil
 
 with st.expander("**Note on Population Data**"):
     st.info("""
-    Crime rates are calculated per 1,000 people. This analysis uses two different population bases, and the choice of base affects the interpretation of the resulting rate.
+    Stop and search rates are calculated per 1,000 people. This analysis uses two different population bases, and the choice of base affects the interpretation of the resulting rate.
 
     #### Census (Residential) Population
     This is the official number of people who live in an area, based on census data.

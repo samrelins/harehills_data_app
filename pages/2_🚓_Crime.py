@@ -25,7 +25,7 @@ st.markdown("""
 This section explores reported crime rates in Harehills compared to the rest of Leeds. 
 """)
 
-with st.expander("**Note on Population Data***"):
+with st.expander("**Note on Population Data**"):
     st.info("""
     Crime rates are calculated per 1,000 people. This analysis uses two different population bases, and the choice of base affects the interpretation of the resulting rate.
 
