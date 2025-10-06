@@ -12,11 +12,11 @@ st.set_page_config(
 st.title("Harehills: The Data Behind the Narrative")
 
 st.markdown("""
-Welcome to an interactive exploration of the Harehills area in Leeds. This project uses publicly available data to examine three key themes: deprivation, crime, and police stop & search operations. The aim of this analysis is to offer a data-driven examination of a neighbourhood often defined by headlines and reputation.[1, 2] By situating local statistics within the broader context of city-wide trends, we can build a more nuanced understanding of how the area is reflected in administrative data.
+Welcome to an interactive exploration of the Harehills area in Leeds. This project uses publicly available data to examine three key themes: deprivation, crime, and police stop & search operations. The aim of this analysis is to offer a data-driven examination of a neighbourhood often defined by headlines and reputation [1, 2]. By situating local statistics within the broader context of city-wide trends, we can build a more nuanced understanding of how the area is reflected in administrative data.
 
-This external view, shaped by recurring crises and amplified by media, often paints a one-dimensional picture of a "problem" area.[1, 3] It's a narrative rooted in the tangible challenges of high crime rates and deep socio-economic deprivation, with the Gipton & Harehills ward ranking among the most deprived nationally.[4, 5]
+This external view, shaped by recurring crises and amplified by media, often paints a one-dimensional picture of a "problem" area [1]. It's a narrative rooted in the tangible challenges of high crime rates and deep socio-economic deprivation, with the Gipton & Harehills ward ranking among the most deprived nationally [2, 3].
 
-However, this picture is profoundly incomplete. To its residents, Harehills is a "superdiverse" [6] and resilient community, a place celebrated for its vibrant cultural mix and a powerful "grassroots spirit that has been lost in other more invested in parts of the city".[1] This app provides the raw data to explore the space between these two competing narratives.
+However, this picture is profoundly incomplete. To its residents, Harehills is a diverse and resilient community, a place celebrated for its vibrant cultural mix and a powerful "grassroots spirit that has been lost in other more invested in parts of the city" [1]. This app provides the raw data to explore the space between these two competing narratives.
 """)
 
 # Data source information
@@ -27,9 +27,6 @@ st.markdown("""
 ---
 ### Citations
 1.  Welcome to Leeds,(https://welcometoleeds.co.uk/suburb-guide/harehills/).
-2.  Yorkshire Post,(https://www.yorkshirepost.co.uk/news/people/harehills-leeds-the-secret-oasis-nestled-inside-one-of-yorkshires-most-deprived-neighbourhoods-which-attracts-love-island-stars-4985641), 2025.
-3.  Wikipedia, [*Harehills*](https://en.wikipedia.org/wiki/Harehills).
-4.  The Guardian, [*How unrest in Leeds escalated – and was defused*](https://www.theguardian.com/uk-news/article/2024/jul/19/how-unrest-in-leeds-escalated-and-was-defused-harehills), 2024.
-5.  Yorkshire Voice, [*Living in Poverty and deprived areas are seriously bad for your health*](https://yorkshirevoice.com/living-in-poverty-and-deprived-areas-are-seriously-bad-for-your-health), 2024.
-6.  TLANG Blog,(https://tlangblog.wordpress.com/2015/10/30/superdiverse-inner-city-leeds/), 2015.
+2.  The Guardian, [*How unrest in Leeds escalated – and was defused*](https://www.theguardian.com/uk-news/article/2024/jul/19/how-unrest-in-leeds-escalated-and-was-defused-harehills), 2024.
+3.  Yorkshire Voice, [*Living in Poverty and deprived areas are seriously bad for your health*](https://yorkshirevoice.com/living-in-poverty-and-deprived-areas-are-seriously-bad-for-your-health), 2024.
 """)
